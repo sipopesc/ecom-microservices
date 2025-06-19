@@ -1,0 +1,5 @@
+build:
+  id: 202020
+  version: 2.2.2.2
+  name: "Local filesystem configuration for TEST"
+  type: "Local storage of TEST configuration"

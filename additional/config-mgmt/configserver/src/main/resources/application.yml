@@ -2,30 +2,25 @@ spring:
   application:
     name: configserver
   profiles:
-    active: native
-  cloud:
-    config:
-      server:
-        native:
-          search-locations: file:///C:\Users\FAISAL\Desktop\courses\embarkx\Microservices\ecom-microservices\additional\config-mgmt\configserver\src\main\resources\config
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: guest
-    password: guest
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
+    active: test
 #  cloud:
 #    config:
 #      server:
-#        git:
-#          uri: https://github.com/faisal-courses/app-configuration
-#          username: ${GIT_USER}
-#          password: ${GIT_TOKEN}
+#        native:
+#          search-locations: file:///c:\Temp\configserver\ecom-microservices\configserver\src\main\resources\config
+#  rabbitmq:
+#    host: localhost
+#    port: 5672
+#    username: guest
+#    password: guest
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/sipopesc/ecomm-app-config
+          default-label: master
+          username: ${GIT_USER}
+          password: ${GIT_TOKEN}
 #  profiles:
 #    active: jdbc
 #  datasource:
@@ -39,15 +34,19 @@ management:
 #        jdbc:
 #          sql: "SELECT PROP_KEY, PROP_VALUE from PROPERTIES where APPLICATION=? and PROFILE=? and LABEL=?"
 #          default-label: main
-
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: "*"
 server:
   port: 8888
 
 #encrypt:
 #  key: "0E329232EA6D0D73"
 
-encrypt:
-  key-store:
-    location: config-server.jks
-    password: mypass
-    alias: config-server-key
+#encrypt:
+#  key-store:
+#    location: config-server.jks
+#    password: mypass
+#    alias: config-server-key
